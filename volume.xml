@@ -1,19 +1,46 @@
 <grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulevolume" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
-  <rule id="rulevolume" scope="public">
-    <example>Sarah parle plus fort</example>
-    <tag>out.action=new Object(); </tag>
-    <item weight="2">Sarah</item>
-    <one-of>
-      <item>coupe le son<tag>out.action.soundValue="mute"</tag></item>
-      <item>tais toi<tag>out.action.soundValue="mute"</tag></item>
-      <item>remet le son<tag>out.action.soundValue="unmute"</tag></item>
-      <item>tu peux parler<tag>out.action.soundValue="unmute"</tag></item>
-      <item>parle plus fort<tag>out.action.soundValue="up"</tag></item>
-      <item>monte le volume<tag>out.action.soundValue="up"</tag></item>
-      <item>parle moins fort<tag>out.action.soundValue="down"</tag></item>
-      <item>baisse le volume<tag>out.action.soundValue="down"</tag></item>
-    </one-of>
-	
-<tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/volume";</tag>
-  </rule>
+    <rule id="rulevolume" scope="public">
+        <example>Sarah parle plus fort</example>
+        <tag>out.action=new Object(); </tag>
+        <item weight="2">Sarah</item>
+        <one-of>
+            <item>coupe le son<tag>out.action.soundValue="mute"</tag></item>
+            <item>tais toi<tag>out.action.soundValue="mute"</tag></item>
+            <item>remet le son<tag>out.action.soundValue="unmute"</tag></item>
+            <item>tu peux parler<tag>out.action.soundValue="unmute"</tag></item>
+            <item>parle plus fort<tag>out.action.soundValue="up"</tag></item>
+            <item>monte le volume<tag>out.action.soundValue="up"</tag></item>
+            <item>parle moins fort<tag>out.action.soundValue="down"</tag></item>
+            <item>baisse le volume<tag>out.action.soundValue="down"</tag></item>
+            <item>
+                <ruleref uri="#rulevolume_set"/>
+                <tag>out.action = rules.rulevolume_set;</tag>
+            </item>
+        </one-of>
+
+        <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/volume";</tag>
+    </rule>
+
+    <rule id="rulevolume_set" scope="public">
+        <example>Sarah met le volume a cinquante pourcent</example>
+        <example>Sarah met le volume a vingt</example>
+        <tag>out.action=new Object(); </tag>
+        <one-of>
+            <item>met le volume a<tag>out.action.soundValue="set"</tag></item>
+        </one-of>
+        <one-of>
+            <item> zéro <tag> out.action.percentage = 0; </tag> </item>
+            <item> dix <tag> out.action.percentage = 10; </tag> </item>
+            <item> vingt <tag> out.action.percentage = 20; </tag> </item>
+            <item> trente <tag> out.action.percentage = 30; </tag> </item>
+            <item> quarante <tag> out.action.percentage = 40; </tag> </item>
+            <item> cinquante <tag> out.action.percentage = 50; </tag> </item>
+            <item> soixante <tag> out.action.percentage = 60; </tag> </item>
+            <item> soixante-dix <tag> out.action.percentage = 70; </tag> </item>
+            <item> quatre-vingt <tag> out.action.percentage = 80; </tag> </item>
+            <item> quatre-vingt-dix <tag> out.action.percentage = 90; </tag> </item>
+            <item> cent <tag> out.action.percentage = 100; </tag> </item>
+        </one-of>
+        <item repeat="0-1"> pour cent </item>
+    </rule>
 </grammar>

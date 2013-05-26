@@ -8,6 +8,7 @@ exports.action = function (data, callback, config) {
     } else {
         // Set default values
         config.volumeStep = '10000';
+        config.maxVolume = 65535;
         if (config.os_version == '32') {
             config.process = '%CD%/plugins/volume/bin/nircmdc.exe';
         } else {
@@ -35,6 +36,15 @@ exports.action = function (data, callback, config) {
         case 'down':
             command = ' changesysvolume -' + config.volumeStep;
             result = 'voila, je parle moins fort.';
+            break;
+        case 'set':
+            // We convert percentage to system value based on max volume
+            var percent = (data.percentage >= 0 && data.percentage <= 100) ? data.percentage : null;
+            if (percent) {
+                var sysValue =  Math.round(parseInt(percent) * config.maxVolume / 100);
+                command = ' setsysvolume ' + sysValue;
+                result = 'volume réglé.';
+            }
             break;
         default :
             break;
