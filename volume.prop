@@ -1,0 +1,9 @@
+{
+  "modules" : { 
+    "volume"  : {
+      "description": "Controle du volume du haut-parleur",
+      "version"    : "1.0",
+      "os_version"   : "[FIXME]"
+    }
+  }
+}
