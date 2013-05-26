@@ -25,9 +25,12 @@
         <example>Sarah met le volume a cinquante pourcent</example>
         <example>Sarah met le volume a vingt</example>
         <tag>out.action=new Object(); </tag>
-        <one-of>
-            <item>met le volume a<tag>out.action.soundValue="set"</tag></item>
-        </one-of>
+            <item>met le<tag>out.action.soundValue="set"</tag></item>
+            <one-of>
+                <item>son</item>
+                <item>volume</item>
+            </one-of>
+            a
         <one-of>
             <item> zéro <tag> out.action.percentage = 0; </tag> </item>
             <item> dix <tag> out.action.percentage = 10; </tag> </item>

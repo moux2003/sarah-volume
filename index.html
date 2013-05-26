@@ -11,7 +11,7 @@
 </script>
 <p class="page-header">
     <span class="lead">Ce module permet de contrôler le volume système via S.A.R.A.H</span><br/>
-    Le plugin se sert du programme <code>./bin/nircmdc.exe</code>
+    Le plugin est basé sur l'outil en ligne de commande <em>NirCmd</em>.
 </p>
 
 <div id="plugin-menu" class="row-fluid">
@@ -22,6 +22,9 @@
             <li class="active"><a href="" data-toggle="plugin-config-sarah">SARAH</a></li>
             <li class="nav-header">Commandes vocales</li>
             <li><a href="#" data-toggle="plugin-vox-examples">Exemples</a></li>
+            <li><a href="#" data-toggle="plugin-vox-restrict">Restrictions</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-toggle="plugin-changelog">CHANGELOG</a></li>
         </ul>
     </div>
     <!--Content-->
@@ -41,6 +44,20 @@
             <li><i class="icon-play-circle"></i> Sarah remet le son</li>
             <li><i class="icon-play-circle"></i> Sarah monte le volume</li>
             <li><i class="icon-play-circle"></i> Sarah baisse le volume</li>
+            <li><i class="icon-play-circle"></i> Sarah met le volume a 50 %
+                (<span class="text-error">"pour cent" étant optionnel</span>)
+            </li>
+        </ul>
+        <!--Restrictions-->
+        <ul class="unstyled" id="plugin-vox-restrict" style="display: none;">
+            <li><i class="icon-play-circle"></i> Le réglage du son à un niveau précis ne supporte, pour l'instant, que
+                les paliers de 10 allant de 0 à 100.
+            </li>
+        </ul>
+        <!--CHANGELOG-->
+        <ul class="unstyled" id="plugin-changelog" style="display: none;">
+            <li><i class="icon-play-circle"></i> <strong>1.1</strong> : Ajout du réglage du son à un niveau donné</li>
+            <li><i class="icon-play-circle"></i> <strong>1.0</strong> : Création du plugin</li>
         </ul>
     </div>
 </div>
